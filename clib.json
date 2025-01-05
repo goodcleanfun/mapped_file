@@ -1,0 +1,19 @@
+{
+    "name": "mapped_file",
+    "version": "0.0.0",
+    "repo": "goodcleanfun/mapped_file",
+    "description": "Cross-platform memory-mapped files",
+    "keywords": [],
+    "license": "MIT",
+    "development": {
+      "silentbicycle/greatest": "*"
+    },
+    "dependencies": {
+      "goodcleanfun/aligned": "*"
+    },
+    "src": [
+      "src/mapped_file.h",
+      "src/mapped_file.c"
+    ]
+    
+  }
