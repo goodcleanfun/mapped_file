@@ -4,8 +4,15 @@
 #include <fcntl.h>
 
 #ifdef _WIN32
-#include <io.h>
-#include <memoryapi.h>
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#define MAPPED_FILE_UNDEF_WIN32_LEAN_AND_MEAN
+#endif
+#include <windows.h>
+#ifdef MAPPED_FILE_UNDEF_WIN32_LEAN_AND_MEAN
+#undef MAPPED_FILE_UNDEF_WIN32_LEAN_AND_MEAN
+#undef WIN32_LEAN_AND_MEAN
+#endif
 #else
 #include <unistd.h>
 #endif
