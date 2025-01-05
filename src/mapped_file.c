@@ -63,7 +63,7 @@ mapped_file *mapped_file_map_from_file_descriptor(int fd, size_t pos, size_t siz
         fprintf(stderr, "Invalid file descriptor fd=%d\n", fd);
         return NULL;
     }
-    int file = _get_osfhandle((intptr_t)fd);
+    HANDLE file = (HANDLE)_get_osfhandle((intptr_t)fd);
     if (file == INVALID_HANDLE_VALUE) {
         fprintf(stderr, "Invalid file descriptor fd=%d\n", fd);
         return NULL;
@@ -71,7 +71,7 @@ mapped_file *mapped_file_map_from_file_descriptor(int fd, size_t pos, size_t siz
     const DWORD max_size_hi =
         sizeof(size_t) > sizeof(DWORD) ? upsize >> (CHAR_BIT * sizeof(DWORD)) : 0;
     const DWORD max_size_lo = upsize & DWORD_MAX;
-    HANDLE file_mapping = CreateFileMappingA((HANDLE)file, NULL, PAGE_READONLY,
+    HANDLE file_mapping = CreateFileMappingA(file, NULL, PAGE_READONLY,
                                             max_size_hi, max_size_lo, NULL);
     if (file_mapping == INVALID_HANDLE_VALUE) {
         fprintf(stderr, "Can't create file mapping for fd=%d size=%zu: %lu\n",
