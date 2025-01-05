@@ -8,8 +8,6 @@
 #include "aligned/aligned.h"
 
 #ifdef _WIN32
-#include <io.h>
-#include <memoryapi.h>
 #define DWORD_MAX 0xFFFFFFFF
 #else
 #include <sys/mman.h>
