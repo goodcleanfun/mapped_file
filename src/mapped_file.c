@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <fcntl.h>
+
 
 #ifdef _WIN32
 #include <io.h>
@@ -11,7 +13,6 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include <fcntl.h>
 #endif
 
 static memory_region create_memory_region(void *data, void *mmap, size_t size, size_t offset) {

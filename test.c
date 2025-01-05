@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
 #ifdef _WIN32
 #include <io.h>
 #include <memoryapi.h>
 #else
-#include <fcntl.h>
 #include <unistd.h>
 #endif
 
@@ -39,7 +39,7 @@ TEST test_mapped_file_map_fd() {
     fputs(content, file);
     fclose(file);
 
-    #ifdef _WIN32
+    #if defined(_WIN32) && !defined(__CYGWIN__)
     int fd = _open(filename, _O_RDONLY);
     #else
     int fd = open(filename, O_RDONLY);
