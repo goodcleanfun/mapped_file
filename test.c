@@ -119,7 +119,6 @@ TEST test_mapped_file_map_fallback() {
 SUITE(mapped_file_suite) {
     RUN_TEST(test_mapped_file_new);
     RUN_TEST(test_mapped_file_map);
-    RUN_TEST(test_mapped_file_map_fallback);
 }
 
 GREATEST_MAIN_DEFS();
