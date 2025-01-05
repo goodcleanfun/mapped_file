@@ -61,6 +61,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
       - name: Install dependencies
         run: |
           choco install make
@@ -72,7 +74,7 @@ jobs:
           mkdir -p deps\aligned
           curl -L https://raw.githubusercontent.com/goodcleanfun/aligned/refs/heads/main/src/aligned.h -o deps\aligned\aligned.h
       - name: Run tests with MSVC
-        run: make CC=cl CFLAGS="/D _WIN64" LDFLAGS="/link /MACHINE:X64" test
+        run: make CC=cl CFLAGS="/D _WIN64" LDFLAGS="/link /MACHINE:X64"  test
 
   test-windows-mingw:
     runs-on: windows-latest
