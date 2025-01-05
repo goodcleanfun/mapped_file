@@ -4,6 +4,7 @@
 
 #ifdef _WIN32
 #include <io.h>
+#include <memoryapi.h>
 #else
 #include <fcntl.h>
 #include <unistd.h>
