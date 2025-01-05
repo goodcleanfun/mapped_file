@@ -4,8 +4,6 @@
 #include <stdlib.h>
 #include <errno.h>
 
-#include "aligned/aligned.h"
-
 #ifdef _WIN32
 #include <io.h>
 #include <memoryapi.h>
