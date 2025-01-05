@@ -5,10 +5,12 @@
 #include <errno.h>
 #include <fcntl.h>
 
+#include "aligned/aligned.h"
 
 #ifdef _WIN32
 #include <io.h>
 #include <memoryapi.h>
+#define DWORD_MAX 0xFFFFFFFF
 #else
 #include <sys/mman.h>
 #include <sys/stat.h>
@@ -63,7 +65,7 @@ mapped_file *mapped_file_map_from_file_descriptor(int fd, size_t pos, size_t siz
         fprintf(stderr, "Invalid file descriptor fd=%d\n", fd);
         return NULL;
     }
-    HANDLE file = _get_osfhandle(fd);
+    HANDLE file = _get_osfhandle((intptr_t)fd);
     if (file == INVALID_HANDLE_VALUE) {
         fprintf(stderr, "Invalid file descriptor fd=%d\n", fd);
         return NULL;
